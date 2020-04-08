@@ -1,0 +1,6 @@
+framework module FBBase {
+  umbrella header "FBBase.h"
+
+  export *
+  module * { export * }
+}
