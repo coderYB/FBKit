@@ -1,0 +1,6 @@
+framework module FBHud {
+  umbrella header "FBHud.h"
+
+  export *
+  module * { export * }
+}
