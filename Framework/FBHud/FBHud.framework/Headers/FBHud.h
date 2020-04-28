@@ -16,5 +16,21 @@ FOUNDATION_EXPORT const unsigned char FBHudVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FBHud/PublicHeader.h>
 
+NS_ASSUME_NONNULL_BEGIN
 
-#import <FBHud/FBHudManager.h>
+NS_SWIFT_NAME(FBHud)
+@interface FBHud : NSObject
+
++ (void)configHud NS_SWIFT_NAME(configHud());
+
++ (void)showActivity NS_SWIFT_NAME(show());
+
++ (void)showInfo:(NSString *_Nonnull)msg;
+
++ (void)showWithStatus:(NSString * _Nullable)msg;
+
++ (void)pop NS_SWIFT_NAME(pop());
+
+@end
+
+NS_ASSUME_NONNULL_END

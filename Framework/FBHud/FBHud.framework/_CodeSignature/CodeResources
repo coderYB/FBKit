@@ -6,11 +6,7 @@
 	<dict>
 		<key>Headers/FBHud.h</key>
 		<data>
-		uYEQ0S/MoTY8P/7kAntJHEf+B4A=
-		</data>
-		<key>Headers/FBHudManager.h</key>
-		<data>
-		UAV8fSNn+WIrOz4lfEuHj933H/Y=
+		qgpJsNmchPRffkVxOFl9FesoxCY=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -75,22 +71,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			uYEQ0S/MoTY8P/7kAntJHEf+B4A=
+			qgpJsNmchPRffkVxOFl9FesoxCY=
 			</data>
 			<key>hash2</key>
 			<data>
-			s66SS1f4K24wszljcIGYUfldxAabGTx/gYXXEcskjC4=
-			</data>
-		</dict>
-		<key>Headers/FBHudManager.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			UAV8fSNn+WIrOz4lfEuHj933H/Y=
-			</data>
-			<key>hash2</key>
-			<data>
-			N4S4qz200OGlwlUBFnqWrULZZRfqhvD/g8h75Tkn6pU=
+			BSqv+oEX1zMm53bVPi4INuEg2t1pAhLYa7E8JTQZ/7s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
