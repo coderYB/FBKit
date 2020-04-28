@@ -1,0 +1,6 @@
+framework module FBTransition {
+  umbrella header "FBTransition.h"
+
+  export *
+  module * { export * }
+}
