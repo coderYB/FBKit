@@ -18,7 +18,7 @@ FOUNDATION_EXPORT const unsigned char FBNaviVersionString[];
 
 #import <FBNavi/FBNavigationController.h>
 
-#import <FBNavi/UINavigationBar+FB.h>
+#import <FBNavi/FBNavigationBarExtensions.h>
 
-#import <FBNavi/UIBarButtonItem+FB.h>
+#import <FBNavi/FBBarButtonItemExtensions.h>
 
