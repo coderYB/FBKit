@@ -1,0 +1,6 @@
+framework module FBNavi {
+  umbrella header "FBNavi.h"
+
+  export *
+  module * { export * }
+}
