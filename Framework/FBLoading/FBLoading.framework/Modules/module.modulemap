@@ -1,0 +1,6 @@
+framework module FBLoading {
+  umbrella header "FBLoading.h"
+
+  export *
+  module * { export * }
+}
