@@ -1,0 +1,6 @@
+framework module FBColor {
+  umbrella header "FBColor.h"
+
+  export *
+  module * { export * }
+}

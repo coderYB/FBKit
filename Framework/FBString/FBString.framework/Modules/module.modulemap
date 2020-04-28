@@ -1,0 +1,6 @@
+framework module FBString {
+  umbrella header "FBString.h"
+
+  export *
+  module * { export * }
+}

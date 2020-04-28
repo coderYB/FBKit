@@ -1,0 +1,6 @@
+framework module FBSign {
+  umbrella header "FBSign.h"
+
+  export *
+  module * { export * }
+}

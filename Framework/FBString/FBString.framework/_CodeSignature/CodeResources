@@ -4,56 +4,56 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/FBBase.h</key>
+		<key>Headers/FBString.h</key>
 		<data>
-		wyoc+xb9ba2k5Ff7pgJc17xbHJo=
+		SfrbLdDZgG4MiGjB9+mnZhtCJ9Y=
 		</data>
-		<key>Headers/FBBaseViewController.h</key>
+		<key>Headers/FBStringExtensions.h</key>
 		<data>
-		JHC1dkD+IsaFfg1alza5c9m8MSg=
+		iLR1mhm4EPFlbGep5MxEtnJjYQc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ZHk0hg/9fmlynvj9Sn/NDhP9KAQ=
+		Z/KB+XOt0vCaJHvRAUT/pIeQvIQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		DjFxKxhs15KO4BzsN2SPLSVnCr4=
+		K+YVxruZQ4PqfBmkWUu5/YI09zw=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/FBBase.h</key>
+		<key>Headers/FBString.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wyoc+xb9ba2k5Ff7pgJc17xbHJo=
+			SfrbLdDZgG4MiGjB9+mnZhtCJ9Y=
 			</data>
 			<key>hash2</key>
 			<data>
-			8QzVkO1nPgU/wFKOgI3LKRMZzQimtKiyT/1INrE5k64=
+			GUvnO1YVjOQzZMl4XE1UOdZGjDwfKaYtNLLhUHV6SYs=
 			</data>
 		</dict>
-		<key>Headers/FBBaseViewController.h</key>
+		<key>Headers/FBStringExtensions.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JHC1dkD+IsaFfg1alza5c9m8MSg=
+			iLR1mhm4EPFlbGep5MxEtnJjYQc=
 			</data>
 			<key>hash2</key>
 			<data>
-			hRpTSkpxv2TP90VE8hus+g3VcUr31U/cEzv5nWtzwbs=
+			fJWg7e6bs7705V8MukfoWuduKme3JkaDx8aHpbU6C1w=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			DjFxKxhs15KO4BzsN2SPLSVnCr4=
+			K+YVxruZQ4PqfBmkWUu5/YI09zw=
 			</data>
 			<key>hash2</key>
 			<data>
-			sYW6BeTY7txE+oMvmZYjslfGKC4WKzHWgoK8jFx92QY=
+			rXmNtEy00ybwoulRk+hhF8Ufh4YgT7a4LwPwlYwHwK4=
 			</data>
 		</dict>
 	</dict>
