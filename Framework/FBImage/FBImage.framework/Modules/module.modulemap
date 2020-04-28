@@ -1,0 +1,6 @@
+framework module FBImage {
+  umbrella header "FBImage.h"
+
+  export *
+  module * { export * }
+}
