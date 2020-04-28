@@ -1,0 +1,6 @@
+framework module FBOSS {
+  umbrella header "FBOSS.h"
+
+  export *
+  module * { export * }
+}
