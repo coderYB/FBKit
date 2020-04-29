@@ -264,7 +264,7 @@
         
         _drawView.backgroundColor = [UIColor clearColor];
         
-        _drawView.fillColor = FB_COLOR_CREATE(@"#bdc5ce");
+        _drawView.fillColor = [UIColor clearColor];
     }
     return _drawView;
 }
@@ -398,33 +398,35 @@
     
     self.logoImgView.layer.masksToBounds = true;
     
+    self.logoImgView.layer.borderColor = FB_COLOR_CREATE(@FBProjectColor).CGColor;
+    
+    self.logoImgView.layer.borderWidth = 1;
+    
     [self.logoImgView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.width.height.mas_equalTo(80);
         
         make.centerX.equalTo(self.view.mas_centerX);
         
-        make.centerY.equalTo(self.drawView.mas_top);
+        make.top.mas_equalTo(FB_VIEWCONTROLLER_HEIGHT / 3 - FB_STATUSBAR_HEIGHT);
     }];
     
     [self.phone mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.mas_equalTo(self.drawView.mas_top).offset(60);
+        make.top.mas_equalTo(self.logoImgView.mas_bottom).offset(30);
         
-        make.left.equalTo(self.drawView.mas_left).offset(15);
+        make.left.mas_equalTo(30);
         
-        make.right.equalTo(self.drawView.mas_right).offset(-15);
+        make.right.mas_equalTo(-30);
         
         make.height.mas_equalTo(@48);
     }];
     
     self.phone.backgroundColor = [UIColor whiteColor];
     
-    self.phone.layer.cornerRadius = 24;
+    [self.phone FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
     
-    self.phone.layer.masksToBounds = true;
-    
-    [self.phone FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
+    [self.phone FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
     
     [self.vcode mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -437,6 +439,12 @@
         make.height.mas_equalTo(self.phone.mas_height);
     }];
     
+    self.vcode.backgroundColor = [UIColor whiteColor];
+    
+    [self.vcode FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
+    
+    [self.vcode FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
+    
     UIButton *vcodeItem = (UIButton *)self.vcode.rightView;
     
     [vcodeItem setTitle:@"获取验证码" forState:UIControlStateNormal];
@@ -448,16 +456,6 @@
     [vcodeItem setTitleColor:FB_ALPHA_COLOR_CREATE(FB_COLOR_FORMAT_STRING(@FBProjectColor, @"80")) forState:UIControlStateHighlighted];
     
     [vcodeItem setTitleColor:FB_COLOR_CREATE(@"#999999") forState:UIControlStateSelected];
-    
-    [self.vcode setRightView:vcodeItem];
-    
-    self.vcode.backgroundColor = [UIColor whiteColor];
-    
-    self.vcode.layer.cornerRadius = 24;
-    
-    self.vcode.layer.masksToBounds = true;
-    
-    [self.vcode FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
     
     [self.password mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -472,36 +470,28 @@
     
     self.password.backgroundColor = [UIColor whiteColor];
     
-    self.password.layer.cornerRadius = 24;
+    [self.password FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
     
-    self.password.layer.masksToBounds = true;
-    
-    [self.password FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
+    [self.password FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
     
     [self.completeItem mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.bottom.equalTo(self.drawView.mas_bottom).offset(-30);
+        make.top.mas_equalTo(self.password.mas_bottom).offset(30);
         
-        make.right.equalTo(self.phone.mas_right);
+        make.left.mas_equalTo(self.phone.mas_left);
         
-        make.height.width.mas_equalTo(80);
+        make.right.mas_equalTo(self.phone.mas_right);
+        
+        make.height.mas_equalTo(self.phone.mas_height);
     }];
     
-    [self.completeItem setImage:[UIImage imageNamed:@FBLoginIcon] forState:UIControlStateNormal];
-    
-    [self.completeItem setImage:[UIImage imageNamed:@FBLoginIcon] forState:UIControlStateHighlighted];
-    
-    [self.completeItem setTitle:@"" forState:UIControlStateNormal];
-
-    [self.completeItem setTitle:@"" forState:UIControlStateHighlighted];
-    
-    self.completeItem.layer.cornerRadius = 40;
+    self.completeItem.layer.cornerRadius = 3;
     
     self.completeItem.layer.masksToBounds = true;
     
-    [self.completeItem setBackgroundImage:[UIImage FBTransformFromHexValue:@"#ffffff"] forState:UIControlStateNormal];
+    [self.completeItem setBackgroundImage:[UIImage FBTransformFromHexValue:@FBProjectColor] forState:UIControlStateNormal];
 
-    [self.completeItem setBackgroundImage:[UIImage FBTransformFromAlphaHexValue:FB_COLOR_FORMAT_STRING(@"#ffffff", @"80")] forState:UIControlStateHighlighted];
+    [self.completeItem setBackgroundImage:[UIImage FBTransformFromAlphaHexValue:FB_COLOR_FORMAT_STRING(@FBProjectColor, @"80")] forState:UIControlStateHighlighted];
     
     [_vcode setLeftImageFrame:CGRectMake(0, 0, 80, 48)];
     

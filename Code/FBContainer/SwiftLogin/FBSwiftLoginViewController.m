@@ -200,7 +200,9 @@
                                                                                    NSForegroundColorAttributeName: FB_COLOR_CREATE(@FBProjectColor)}]];
         [mutable appendAttributedString:[[NSAttributedString alloc] initWithString:@" 注册协议" attributes:@{NSFontAttributeName: FB_SYSTEM_FONT(12) ,
                                                                                                          NSForegroundColorAttributeName: FB_COLOR_CREATE(@"#333333")}] ];
-        [_proItem setAttributFBitle:mutable forState:UIControlStateNormal];
+        
+       
+        [_proItem setAttributedTitle:mutable forState:UIControlStateNormal];
         
         [mutable setAttributedString: [[NSAttributedString alloc] initWithString:displayname ? displayname : @""
                                                                       attributes:@{NSFontAttributeName: FB_SYSTEM_FONT(12) ,
@@ -208,7 +210,7 @@
         [mutable appendAttributedString:[[NSAttributedString alloc] initWithString:@" 注册协议" attributes:@{NSFontAttributeName: FB_SYSTEM_FONT(12) ,
                                                                                                          NSForegroundColorAttributeName: FB_COLOR_CREATE(@"#333333")}] ];
         
-        [_proItem setAttributFBitle:mutable forState:UIControlStateHighlighted];
+        [_proItem setAttributedTitle:mutable forState:UIControlStateHighlighted];
         
         _proItem.titleLabel.font = FB_SYSTEM_FONT(15);
     }
@@ -287,7 +289,7 @@
         
         _drawView.backgroundColor = [UIColor clearColor];
         
-        _drawView.fillColor = FB_COLOR_CREATE(@"#bdc5ce");
+        _drawView.fillColor = [UIColor clearColor];
     }
     return _drawView;
 }
@@ -448,35 +450,36 @@
     
     self.logoImgView.layer.masksToBounds = true;
     
+    self.logoImgView.layer.borderColor = FB_COLOR_CREATE(@FBProjectColor).CGColor;
+    
+    self.logoImgView.layer.borderWidth = 1;
+    
     [self.logoImgView mas_makeConstraints:^(MASConstraintMaker *make) {
        
         make.width.height.mas_equalTo(80);
         
         make.centerX.equalTo(self.view.mas_centerX);
         
-        make.centerY.equalTo(self.drawView.mas_top);
+        make.top.mas_equalTo(FB_VIEWCONTROLLER_HEIGHT / 3 - FB_STATUSBAR_HEIGHT);
     }];
     
     [self.phone mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.mas_equalTo(self.drawView.mas_top).offset(60);
+        make.top.mas_equalTo(self.logoImgView.mas_bottom).offset(30);
         
-        make.left.equalTo(self.drawView.mas_left).offset(15);
+        make.left.mas_equalTo(30);
         
-        make.right.equalTo(self.drawView.mas_right).offset(-15);
+        make.right.mas_equalTo(-30);
         
         make.height.mas_equalTo(@48);
     }];
     
-    [self.phone setLeftImageFrame:CGRectMake(0, 0, 80, 48)];
-    
     self.phone.backgroundColor = [UIColor whiteColor];
     
-    self.phone.layer.cornerRadius = 24;
+    [self.phone FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
     
-    self.phone.layer.masksToBounds = true;
-    //
-    [self.phone FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
+    [self.phone FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
+    
     //
     [self.vcode mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -488,15 +491,12 @@
         
         make.height.mas_equalTo(self.phone.mas_height);
     }];
-    [self.vcode setLeftImageFrame:CGRectMake(0, 0, 80, 48)];
     
     self.vcode.backgroundColor = [UIColor whiteColor];
     
-    self.vcode.layer.cornerRadius = 24;
+    [self.vcode FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
     
-    self.vcode.layer.masksToBounds = true;
-    
-    [self.vcode FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
+    [self.vcode FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
     
     UIButton *vcodeItem = (UIButton *)self.vcode.rightView;
     
@@ -530,47 +530,42 @@
                                                                                NSForegroundColorAttributeName: FB_COLOR_CREATE(@"#333333")}]];
     [mutable appendAttributedString:[[NSAttributedString alloc] initWithString:@" 注册协议" attributes:@{NSFontAttributeName: FB_SYSTEM_FONT(12) ,
                                                                                                      NSForegroundColorAttributeName: FB_COLOR_CREATE(@"#999999")}] ];
-    [self.proItem setAttributFBitle:mutable forState:UIControlStateNormal];
+    [self.proItem setAttributedTitle:mutable forState:UIControlStateNormal];
     
     [mutable setAttributedString: [[NSAttributedString alloc] initWithString:displayname ? displayname : @""
                                                                   attributes:@{NSFontAttributeName: FB_SYSTEM_FONT(12) ,
                                                                                NSForegroundColorAttributeName: FB_ALPHA_COLOR_CREATE(FB_COLOR_FORMAT_STRING(@"#333333", @"80")) }]];
     [mutable appendAttributedString:[[NSAttributedString alloc] initWithString:@" 注册协议" attributes:@{NSFontAttributeName: FB_SYSTEM_FONT(12) ,
                                                                                                      NSForegroundColorAttributeName: FB_COLOR_CREATE(@"#999999")}] ];
-    [self.proItem setAttributFBitle:mutable forState:UIControlStateHighlighted];
+    [self.proItem setAttributedTitle:mutable forState:UIControlStateHighlighted];
     
     [self.proItem setNeedsDisplay];
     
     [self.loginItem mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.bottom.equalTo(self.drawView.mas_bottom).offset(-30);
+        make.top.mas_equalTo(self.proItem.mas_bottom).offset(10);
         
-        make.right.equalTo(self.phone.mas_right);
+        make.left.mas_equalTo(self.phone.mas_left);
         
-        make.height.width.mas_equalTo(80);
+        make.right.mas_equalTo(self.phone.mas_right);
+        
+        make.height.mas_equalTo(self.phone.mas_height);
     }];
     
-    [self.loginItem setImage:[UIImage imageNamed:@FBLoginIcon] forState:UIControlStateNormal];
-    
-    [self.loginItem setImage:[UIImage imageNamed:@FBLoginIcon] forState:UIControlStateHighlighted];
-    
-    [self.loginItem setTitle:@"" forState:UIControlStateNormal];
-
-    [self.loginItem setTitle:@"" forState:UIControlStateHighlighted];
-    
-    self.loginItem.layer.cornerRadius = 40;
+    self.loginItem.layer.cornerRadius = 3;
     
     self.loginItem.layer.masksToBounds = true;
-    
-    [self.loginItem setBackgroundImage:[UIImage FBTransformFromHexValue:@"#ffffff"] forState:UIControlStateNormal];
 
-    [self.loginItem setBackgroundImage:[UIImage FBTransformFromAlphaHexValue:FB_COLOR_FORMAT_STRING(@"#ffffff", @"80")] forState:UIControlStateHighlighted];
+    [self.loginItem setBackgroundImage:[UIImage FBTransformFromHexValue:@FBProjectColor] forState:UIControlStateNormal];
+
+    [self.loginItem setBackgroundImage:[UIImage FBTransformFromAlphaHexValue:FB_COLOR_FORMAT_STRING(@FBProjectColor, @"80")] forState:UIControlStateHighlighted];
+    
     
     [self.backLoginItem mas_makeConstraints:^(MASConstraintMaker *make) {
         
-        make.bottom.mas_equalTo(-60);
+        make.top.mas_equalTo(self.vcode.mas_bottom).offset(10);
         
-        make.centerX.equalTo(self.view);
+        make.left.mas_equalTo(self.phone.mas_left);
         
         make.height.mas_equalTo(self.phone.mas_height);
         

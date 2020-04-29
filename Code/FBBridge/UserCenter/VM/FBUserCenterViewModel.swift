@@ -82,6 +82,8 @@ public enum FBUserCenterType : Int{
     case header
     
     case version
+    
+    case car
 }
 
 extension FBUserCenterType {
@@ -90,7 +92,7 @@ extension FBUserCenterType {
         
         if FBConfigure.fetchPType() == .estate {
             
-            return [userInfo,.privacy,.about,.feedBack,.version,.setting]
+            return [userInfo,.car,.privacy,.feedBack,.version,.setting]
         }
         
         return [userInfo,.contactUS,.feedBack,.setting]
@@ -130,13 +132,15 @@ extension FBUserCenterType {
             
         case .characters: return "角色信息"
             
-        case .feedBack: return "意见建议"
+        case .feedBack: return "用户反馈"
             
         case .share: return "分享"
             
         case .service: return "服务热线"
             
         case .version: return "当前版本"
+            
+        case .car: return "车辆管理"
         default: return ""
             
         }

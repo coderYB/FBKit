@@ -281,7 +281,7 @@
         
         _drawView.backgroundColor = [UIColor clearColor];
         
-        _drawView.fillColor = FB_COLOR_CREATE(@"#bdc5ce");
+        _drawView.fillColor = [UIColor clearColor];
     }
     return _drawView;
 }
@@ -410,9 +410,13 @@
         make.height.mas_equalTo(h * 5 / 4);
     }];
     
-    self.logoImgView.layer.cornerRadius = 40;
+   self.logoImgView.layer.cornerRadius = 40;
     
     self.logoImgView.layer.masksToBounds = true;
+    
+    self.logoImgView.layer.borderColor = FB_COLOR_CREATE(@FBProjectColor).CGColor;
+    
+    self.logoImgView.layer.borderWidth = 1;
     
     [self.logoImgView mas_makeConstraints:^(MASConstraintMaker *make) {
        
@@ -420,8 +424,9 @@
         
         make.centerX.equalTo(self.view.mas_centerX);
         
-        make.centerY.equalTo(self.drawView.mas_top);
+        make.top.mas_equalTo(FB_VIEWCONTROLLER_HEIGHT / 3 - FB_STATUSBAR_HEIGHT);
     }];
+    
     
     [self.oldpassword mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -436,9 +441,9 @@
     
     self.oldpassword.backgroundColor = [UIColor whiteColor];
     
-    self.oldpassword.layer.masksToBounds = true;
+    [self.oldpassword FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
     
-    [self.oldpassword FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
+    [self.oldpassword FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
     
     [self.password mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -453,11 +458,9 @@
     
     self.password.backgroundColor = [UIColor whiteColor];
     
-    self.password.layer.cornerRadius = 24;
+    [self.password FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
     
-    self.password.layer.masksToBounds = true;
-    
-    [self.password FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
+    [self.password FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
     
     [self.againpassword mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -472,11 +475,9 @@
     
     self.againpassword.backgroundColor = [UIColor whiteColor];
     
-    self.againpassword.layer.cornerRadius = 24;
+    [self.againpassword FB_bottomLineFrame:CGRectMake(0, 47, w - 60, 1)];
     
-    self.againpassword.layer.masksToBounds = true;
-    
-    [self.againpassword FB_bottomLineFrame:CGRectMake(0, 47, w - 30, 1)];
+    [self.againpassword FB_bottomLineColor:FB_COLOR_CREATE(@FBProjectColor)];
     
     [self.completeItem mas_makeConstraints:^(MASConstraintMaker *make) {
         
@@ -487,21 +488,24 @@
         make.height.width.mas_equalTo(80);
     }];
     
-    [self.completeItem setImage:[UIImage imageNamed:@FBLoginIcon] forState:UIControlStateNormal];
+    [self.completeItem mas_makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.mas_equalTo(self.password.mas_bottom).offset(30);
+        
+        make.left.mas_equalTo(self.oldpassword.mas_left);
+        
+        make.right.mas_equalTo(self.oldpassword.mas_right);
+        
+        make.height.mas_equalTo(self.oldpassword.mas_height);
+    }];
     
-    [self.completeItem setImage:[UIImage imageNamed:@FBLoginIcon] forState:UIControlStateHighlighted];
-    
-    [self.completeItem setTitle:@"" forState:UIControlStateNormal];
-
-    [self.completeItem setTitle:@"" forState:UIControlStateHighlighted];
-    
-    self.completeItem.layer.cornerRadius = 40;
+    self.completeItem.layer.cornerRadius = 3;
     
     self.completeItem.layer.masksToBounds = true;
     
-    [self.completeItem setBackgroundImage:[UIImage FBTransformFromHexValue:@"#ffffff"] forState:UIControlStateNormal];
+    [self.completeItem setBackgroundImage:[UIImage FBTransformFromHexValue:@FBProjectColor] forState:UIControlStateNormal];
 
-    [self.completeItem setBackgroundImage:[UIImage FBTransformFromAlphaHexValue:FB_COLOR_FORMAT_STRING(@"#ffffff", @"80")] forState:UIControlStateHighlighted];;
+    [self.completeItem setBackgroundImage:[UIImage FBTransformFromAlphaHexValue:FB_COLOR_FORMAT_STRING(@FBProjectColor, @"80")] forState:UIControlStateHighlighted];
     
     [self.oldpassword setLeftImageFrame:CGRectMake(0, 0, 80, 48)];
     

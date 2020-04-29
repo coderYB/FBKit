@@ -21,11 +21,13 @@
 
 #define FBCONTAINERTAB 0
 
+#define FBCONTAINERFORCELOGIN 1
+
 // MARK: 登陆 导航透明色
 #define FBLOGINNAVALPHA 1
 
 // MARK: 个人中心 导航透明色
-#define FBPROFILEALPHA 0
+#define FBPROFILEALPHA 1
 
 #pragma mark ---welcome
 

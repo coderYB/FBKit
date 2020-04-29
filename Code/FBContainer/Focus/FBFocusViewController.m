@@ -10,6 +10,9 @@
 @import Masonry;
 @import SDWebImage;
 @import JXTAlertManager;
+@import FBCommon;
+@import FBColor;
+@import FBString;
 
 @interface FBFocusTableViewCell()
 
@@ -89,7 +92,7 @@
 }
 - (void)setFocus:(FBFocusBean *)focus {
     
-    self.timeLabel.text = [[NSString stringWithFormat:@"%ld",focus.intime / 1000] s_convertToDate:SDateTypeDateStyle];
+    self.timeLabel.text = [[NSString stringWithFormat:@"%ld",focus.intime / 1000] FBConvertToDate:FBDateTypeDate];
     
     self.nameLabel.text = focus.users.nickname;
     
