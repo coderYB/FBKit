@@ -1,0 +1,6 @@
+framework module FBReq {
+  umbrella header "FBReq.h"
+
+  export *
+  module * { export * }
+}
