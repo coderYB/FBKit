@@ -65,18 +65,18 @@ Pod::Spec.new do |spec|
     login.dependency 'FBDraw'
   end
   
-  # 注册 reg
-  spec.subspec 'Reg' do |reg|
+  # 注册 swiftLogin
+  spec.subspec 'SwiftLogin' do |swiftLogin|
     
-    reg.source_files = "Code/FBContainer/Reg/*.{h,m}"
-    reg.dependency 'FBConfig'
-    reg.dependency 'FBBridge/Reg/Bridge'
-    reg.dependency 'Masonry'
-    reg.dependency 'FBTextField'
-    reg.dependency 'FBTransition'
-    reg.dependency 'FBImage'
-    reg.dependency 'FBString'
-    reg.dependency 'FBDraw'
+    swiftLogin.source_files = "Code/FBContainer/SwiftLogin/*.{h,m}"
+    swiftLogin.dependency 'FBConfig'
+    swiftLogin.dependency 'FBBridge/SwiftLogin/Bridge'
+    swiftLogin.dependency 'Masonry'
+    swiftLogin.dependency 'FBTextField'
+    swiftLogin.dependency 'FBTransition'
+    swiftLogin.dependency 'FBImage'
+    swiftLogin.dependency 'FBString'
+    swiftLogin.dependency 'FBDraw'
   end
   
   # 密码 password
