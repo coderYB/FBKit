@@ -1,0 +1,6 @@
+framework module FBAMap {
+  umbrella header "FBAMap.h"
+
+  export *
+  module * { export * }
+}
