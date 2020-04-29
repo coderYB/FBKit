@@ -1,5 +1,5 @@
 //
-//  EDTTranslateApi.swift
+//  FBTranslateApi.swift
 //  ZApi
 //
 //  Created by three stone 王 on 2020/3/16.
@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import EDTObservableReq
+import FBObservableReq
 import Alamofire
 
-@objc (EDTTranslateStyle)
-public enum EDTTranslateStyle: Int {
+@objc (FBTranslateStyle)
+public enum FBTranslateStyle: Int {
     
     case id // 🇮🇩 印尼语
     
@@ -30,7 +30,7 @@ public enum EDTTranslateStyle: Int {
     case th // 🇹🇭 泰语
 }
 
-extension EDTTranslateStyle {
+extension FBTranslateStyle {
     
     public var title: String {
         
@@ -54,7 +54,7 @@ extension EDTTranslateStyle {
     }
 }
 
-public enum EDTTranslateApi {
+public enum FBTranslateApi {
     
     case translateFromCNToKO(_ text: String ) // 韩语-> 中文
     
@@ -64,12 +64,12 @@ public enum EDTTranslateApi {
     
     case translateFromCNToTer(_ text: String) // 中文 -> 印尼语
     
-    case translateFromCNTo(_ text: String ,style: EDTTranslateStyle)
+    case translateFromCNTo(_ text: String ,style: FBTranslateStyle)
     
-    case translateToCN(_ text: String ,style: EDTTranslateStyle)
+    case translateToCN(_ text: String ,style: FBTranslateStyle)
 }
 
-extension EDTTranslateApi: EDTObservableReq {
+extension FBTranslateApi: FBObservableReq {
     
     public var host: String { return "" }
     

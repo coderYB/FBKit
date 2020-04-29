@@ -1,6 +1,6 @@
 //
-//  EDTError.swift
-//  EDTError
+//  FBError.swift
+//  FBError
 //
 //  Created by 王磊 on 2020/4/16.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum EDTError: Error {
+public enum FBError: Error {
     
     case HTTPFailed(_ error: Error)
     
@@ -17,7 +17,7 @@ public enum EDTError: Error {
     case ServerResponseError(_ msg: String)
 }
 
-extension EDTError {
+extension FBError {
     
     public var description: (String,Error?) {
         

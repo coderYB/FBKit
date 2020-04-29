@@ -1,5 +1,5 @@
 //
-//  EDTApi.swift
+//  FBApi.swift
 //  ZUserKit
 //
 //  Created by three stone 王 on 2019/3/14.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum EDTApi {
+public enum FBApi {
     
     case login(_ phone: String,password: String)
     
