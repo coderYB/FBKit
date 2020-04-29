@@ -1,5 +1,5 @@
 //
-//  EDTAccountCache.swift
+//  FBAccountCache.swift
 //  ZUserKit
 //
 //  Created by three stone 王 on 2019/3/15.
@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import EDTBean
+import FBBean
 
-@objc (EDTAccountCache)
-public final class EDTAccountCache: NSObject {
+@objc (FBAccountCache)
+public final class FBAccountCache: NSObject {
     @objc (shared)
-    public static let `default`: EDTAccountCache = EDTAccountCache()
+    public static let `default`: FBAccountCache = FBAccountCache()
     
     private override init() { }
     
@@ -23,7 +23,7 @@ public final class EDTAccountCache: NSObject {
     @objc public var uid: String = ""
 }
 
-extension EDTAccountCache {
+extension FBAccountCache {
     
     @objc public func isPushOn() -> Bool {
         
@@ -48,7 +48,7 @@ extension EDTAccountCache {
         return !token.isEmpty && token != ""
     }
     
-    public func saveAccount(acc: EDTAccountBean) -> EDTAccountBean {
+    public func saveAccount(acc: FBAccountBean) -> FBAccountBean {
         
         UserDefaults.standard.setValue(acc.token, forKey: "token")
         
@@ -67,14 +67,14 @@ extension EDTAccountCache {
         return acc
     }
     
-    public func queryAccount() -> EDTAccountBean! {
+    public func queryAccount() -> FBAccountBean! {
         
         guard let id = UserDefaults.standard.object(forKey: "uid") else {
             
             return nil
         }
         
-        var acc = EDTAccountBean()
+        var acc = FBAccountBean()
         
         acc.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
         
@@ -100,7 +100,7 @@ extension EDTAccountCache {
             return
         }
         
-        var acc = EDTAccountBean()
+        var acc = FBAccountBean()
         
         acc.token = UserDefaults.standard.object(forKey: "token") as? String ?? ""
         

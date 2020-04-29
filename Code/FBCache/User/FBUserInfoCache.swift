@@ -1,5 +1,5 @@
 //
-//  EDTUserInfoCache.swift
+//  FBUserInfoCache.swift
 //  ZUserKit
 //
 //  Created by three stone 王 on 2019/3/15.
@@ -7,32 +7,32 @@
 //
 
 import Foundation
-import EDTBean
-import EDTYY
+import FBBean
+import FBYY
 
-@objc (EDTUserInfoCache)
-public final class EDTUserInfoCache: NSObject {
+@objc (FBUserInfoCache)
+public final class FBUserInfoCache: NSObject {
     @objc (shared)
-    public static let `default`: EDTUserInfoCache = EDTUserInfoCache()
+    public static let `default`: FBUserInfoCache = FBUserInfoCache()
     
     private override init() {
         
         if let info = Bundle.main.infoDictionary {
             
-            EDTYY.shared().createCache(info["CFBundleDisplayName"] as? String ?? "EDTUserInfoCache" )
+            FBYY.shared().createCache(info["CFBundleDisplayName"] as? String ?? "FBUserInfoCache" )
         }
     }
     @objc (userBean)
-    public dynamic var userBean: EDTUserBean = EDTUserBean()
+    public dynamic var userBean: FBUserBean = FBUserBean()
 }
 
-extension EDTUserInfoCache {
+extension FBUserInfoCache {
     
-    public func saveUser(data: EDTUserBean) -> EDTUserBean {
+    public func saveUser(data: FBUserBean) -> FBUserBean {
         
-        if EDTAccountCache.default.uid != "" {
+        if FBAccountCache.default.uid != "" {
             
-            EDTYY.shared().saveObj(data, withKey: "user_" + EDTAccountCache.default.uid)
+            FBYY.shared().saveObj(data, withKey: "user_" + FBAccountCache.default.uid)
             
             userBean = data
         }
@@ -40,18 +40,18 @@ extension EDTUserInfoCache {
         return data
     }
     
-    @objc public func queryUser() -> EDTUserBean  {
+    @objc public func queryUser() -> FBUserBean  {
         
-        if EDTAccountCache.default.uid != "" {
+        if FBAccountCache.default.uid != "" {
             
-            if let user = EDTYY.shared().fetchObj("user_" + EDTAccountCache.default.uid) {
+            if let user = FBYY.shared().fetchObj("user_" + FBAccountCache.default.uid) {
                 
-                userBean = user as! EDTUserBean
+                userBean = user as! FBUserBean
                 
                 return userBean
             }
         }
         
-        return EDTUserBean()
+        return FBUserBean()
     }
 }
