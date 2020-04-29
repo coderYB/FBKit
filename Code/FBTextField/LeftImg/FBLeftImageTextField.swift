@@ -1,5 +1,5 @@
 //
-//  EDTLeftImageTextField.swift
+//  FBLeftImageTextField.swift
 //  TSTFKit_Swift
 //
 //  Created by three stone 王 on 2018/11/22.
@@ -7,8 +7,8 @@
 //
 
 import UIKit
-@objc (EDTLeftImageTextField)
-open class EDTLeftImageTextField: EDTBaseTextField {
+@objc (FBLeftImageTextField)
+open class FBLeftImageTextField: FBBaseTextField {
     
     fileprivate final let leftImageView: UIImageView = UIImageView()
     
@@ -50,10 +50,10 @@ open class EDTLeftImageTextField: EDTBaseTextField {
         return leftImageFrame
     }
 }
-extension EDTLeftImageTextField {
+extension FBLeftImageTextField {
     
     
-    @objc open override func makeAttribute(_ closure: @escaping (EDTLeftImageTextField) -> ()) {
+    @objc open override func makeAttribute(_ closure: @escaping (FBLeftImageTextField) -> ()) {
         
         closure(self)
     }

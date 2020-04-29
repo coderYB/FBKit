@@ -1,5 +1,5 @@
 //
-//  EDTBaseTextField.swift
+//  FBBaseTextField.swift
 //  WLTFKit_Swift
 //
 //  Created by three stone 王 on 2018/11/14.
@@ -18,22 +18,22 @@ import UIKit
 //非英文或数字：[^A-Za-z0-9]
 //非因为或数字或下划线：[^A-Za-z0-9_]
 
-public let WLTOPLINE_TAG: Int = 1001
+public let FB_TOPLINE_TAG: Int = 1001
 
-public let WLBOTTOMLINE_TAG: Int = 1002
+public let FB_BOTTOMLINE_TAG: Int = 1002
 
-fileprivate let WLDOTAFTERCOUNT: Int = 2
+fileprivate let FB_DOTAFTER_COUNT: Int = 2
 
-fileprivate let WLNUMBER_PARTTERN: String = "^[0-9]*$"
+fileprivate let FB_NUMBER_PARTTERN: String = "^[0-9]*$"
 
-fileprivate let WLNUMBERANDCHAR_PARTTERN: String = "^[0-9a-zA-Z]*$"
+fileprivate let FB_NUMBERANDCHAR_PARTTERN: String = "^[0-9a-zA-Z]*$"
 
-fileprivate let WL_ZH_CN: String = "[^\\u4E00-\\u9FA5]"
+fileprivate let FB_ZH_CN: String = "[^\\u4E00-\\u9FA5]"
 
-fileprivate typealias WLTextChanged = (EDTBaseTextField) -> ()
+fileprivate typealias FBTextChanged = (FBBaseTextField) -> ()
 
-@objc (EDTBaseTextField)
-open class EDTBaseTextField: UITextField {
+@objc (FBBaseTextField)
+open class FBBaseTextField: UITextField {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,7 +48,7 @@ open class EDTBaseTextField: UITextField {
     // MARK: topline
     fileprivate lazy var topLine: UIView = UIView().then {
         
-        $0.tag = WLTOPLINE_TAG
+        $0.tag = FB_TOPLINE_TAG
     }
     
     fileprivate var topLineFrame: CGRect = .zero {
@@ -70,7 +70,7 @@ open class EDTBaseTextField: UITextField {
     // MARK: bottomLine
     fileprivate lazy var bottomLine: UIView = UIView().then {
         
-        $0.tag = WLBOTTOMLINE_TAG
+        $0.tag = FB_BOTTOMLINE_TAG
     }
     
     fileprivate var bottomLineFrame: CGRect = .zero  {
@@ -92,7 +92,7 @@ open class EDTBaseTextField: UITextField {
     // MARK: maxLength 默认Int.max
     fileprivate var maxLength: Int = Int.max
     // MARK: 编辑类型 详情参考 枚举
-    fileprivate var editType: EDTTextFiledEditType = .phone {
+    fileprivate var editType: FBTextFiledEditType = .phone {
         
         willSet {
             switch newValue {
@@ -101,7 +101,7 @@ open class EDTBaseTextField: UITextField {
             case .vcode_Length4:
                 fallthrough
             case .vcode_length6:
-                pattern = WLNUMBER_PARTTERN
+                pattern = FB_NUMBER_PARTTERN
                 
                 keyboardType = .phonePad
             case .priceEdit:
@@ -112,14 +112,14 @@ open class EDTBaseTextField: UITextField {
                 keyboardType = .decimalPad
             case .secret:
                 
-                pattern = WLNUMBERANDCHAR_PARTTERN
+                pattern = FB_NUMBERANDCHAR_PARTTERN
                 
                 keyboardType = .asciiCapable
             case .defineLength:
                 
                 NotificationCenter
                     .default
-                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiEDTion"), object: self)
+                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiFBion"), object: self)
                 
                 maxLength = 10
                 
@@ -128,7 +128,7 @@ open class EDTBaseTextField: UITextField {
                 
                 NotificationCenter
                     .default
-                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiEDTion"), object: self)
+                    .addObserver(self, selector: #selector(greetingTextFieldChanged), name: NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiFBion"), object: self)
                 keyboardType = .default
             case .default:
                 
@@ -138,7 +138,7 @@ open class EDTBaseTextField: UITextField {
                 
             case .asii:
                 
-                pattern = WLNUMBERANDCHAR_PARTTERN
+                pattern = FB_NUMBERANDCHAR_PARTTERN
                 
                 keyboardType = .asciiCapable
                 
@@ -149,19 +149,19 @@ open class EDTBaseTextField: UITextField {
     
     deinit {
         
-        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiEDTion"), object: self)
+        NotificationCenter.default.removeObserver(self, name:NSNotification.Name(rawValue: "UITextFieldTextDidChangeNotifiFBion"), object: self)
     }
     
     // MARK: 限制输入的正则表达式字符串
     //  参考文献 https://www.jianshu.com/p/ee27e37bd079
     fileprivate var pattern: String = ""
     // MARK: 文本变化回调（observer为UITextFiled）
-    fileprivate var textChanged: WLTextChanged!
+    fileprivate var textChanged: FBTextChanged!
     
     
 }
 
-extension EDTBaseTextField {
+extension FBBaseTextField {
     @objc (commitInit)
     open func commitInit() {
         
@@ -186,10 +186,10 @@ extension EDTBaseTextField {
 }
 
 /** 文本框内容 样式 */
-extension EDTBaseTextField {
-    @objc (EDTTextFiledEditType)
-    public enum EDTTextFiledEditType: Int {
-        @objc (EDTTextFiledEditTypepriceEdit)
+extension FBBaseTextField {
+    @objc (FBTextFiledEditType)
+    public enum FBTextFiledEditType: Int {
+        @objc (FBTextFiledEditTypepriceEdit)
         case priceEdit
         /** 手机号 默认判断是长度11位 首位为1的+86手机号 如果是复制过去的 加入了-处理机制 比如从通讯录复制*/
         case phone
@@ -212,71 +212,71 @@ extension EDTBaseTextField {
         //        case `default` // 默认 这个在swift中弃用
     }
 }
-extension EDTBaseTextField {
+extension FBBaseTextField {
     @objc (makeAttributeWithClosure:)
-    open func makeAttribute(_ closure: @escaping (EDTBaseTextField) -> ()) {
+    open func makeAttribute(_ closure: @escaping (FBBaseTextField) -> ()) {
         
         closure(self)
     }
 }
 
 // 新增属性的处理
-extension EDTBaseTextField {
-    @objc (EDT_maxLength:)
-    public func EDT_maxLength(_ maxLength: Int) {
+extension FBBaseTextField {
+    @objc (FB_maxLength:)
+    public func FB_maxLength(_ maxLength: Int) {
         
         self.maxLength = maxLength
     }
-    @objc (EDT_editType:)
-    public func EDT_editType(_ editType: EDTTextFiledEditType) {
+    @objc (FB_editType:)
+    public func FB_editType(_ editType: FBTextFiledEditType) {
         
         self.editType = editType
     }
-    @objc (EDT_pattern:)
-    public func EDT_pattern(_ pattern: String) {
+    @objc (FB_pattern:)
+    public func FB_pattern(_ pattern: String) {
         
         self.pattern = pattern
     }
-    @objc (EDT_textChanged:)
-    public func EDT_textChanged(_ textChanged: @escaping (EDTBaseTextField) -> ()) {
+    @objc (FB_textChanged:)
+    public func FB_textChanged(_ textChanged: @escaping (FBBaseTextField) -> ()) {
         
         self.textChanged = textChanged
     }
-    @objc (EDT_topLineFrame:)
-    public func EDT_topLineFrame(_ frame: CGRect) {
+    @objc (FB_topLineFrame:)
+    public func FB_topLineFrame(_ frame: CGRect) {
         
         topLineFrame = frame
     }
-    @objc (EDT_bottomLineFrame:)
-    public func EDT_bottomLineFrame(_ frame: CGRect) {
+    @objc (FB_bottomLineFrame:)
+    public func FB_bottomLineFrame(_ frame: CGRect) {
         
         bottomLineFrame = frame
     }
-    @objc (EDT_topLineColor:)
-    public func EDT_topLineColor(_ color: UIColor) {
+    @objc (FB_topLineColor:)
+    public func FB_topLineColor(_ color: UIColor) {
         
         topLineColor = color
     }
-    @objc (EDT_bottomLineColor:)
-    public func EDT_bottomLineColor(_ color: UIColor) {
+    @objc (FB_bottomLineColor:)
+    public func FB_bottomLineColor(_ color: UIColor) {
         
         bottomLineColor = color
     }
-    @objc (EDT_secureTextEntry:)
-    public func EDT_secureTextEntry(_ isSecureTextEntry: Bool) {
+    @objc (FB_secureTextEntry:)
+    public func FB_secureTextEntry(_ isSecureTextEntry: Bool) {
         
         self.isSecureTextEntry = isSecureTextEntry
     }
 }
 // MARK: UITextFieldDelegate
-extension EDTBaseTextField {
+extension FBBaseTextField {
     
     open override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
-        return __shouldChangeCharacters(target: textField as! EDTBaseTextField,range: range,string: string)
+        return __shouldChangeCharacters(target: textField as! FBBaseTextField,range: range,string: string)
     }
     
-    private func __shouldChangeCharacters(target: EDTBaseTextField , range: NSRange, string: String) -> Bool {
+    private func __shouldChangeCharacters(target: FBBaseTextField , range: NSRange, string: String) -> Bool {
         
         if editType == .defineLength || editType == .only_zh_cn || editType == .default {
             
@@ -342,7 +342,7 @@ extension EDTBaseTextField {
 
 
 // MARK: textFieldDidChange
-extension EDTBaseTextField {
+extension FBBaseTextField {
     @objc (greetingTextFieldChangedWithNoti:)
     open func greetingTextFieldChanged(obj: NSNotification) {
         
@@ -375,13 +375,13 @@ extension EDTBaseTextField {
         }
     }
     
-    @objc open func textFieldDidChange(_ textField: EDTBaseTextField) {
+    @objc open func textFieldDidChange(_ textField: FBBaseTextField) {
         
         __textDidChange(target: textField)
     }
     
     // MARK: editChanged
-    private func __textDidChange(target: EDTBaseTextField) {
+    private func __textDidChange(target: FBBaseTextField) {
         
         switch target.editType {
         case .defineLength: break
@@ -400,7 +400,7 @@ extension EDTBaseTextField {
                 }
                 //再判断长度
                 
-                if resultText.count > maxLength && target.value(forKey: "markedTextRange") == nil {
+                if resultText.count > maxLength && target.value(forKey: "markFBextRange") == nil {
                     
                     while resultText.count > maxLength {
                         
@@ -421,7 +421,7 @@ extension EDTBaseTextField {
 }
 
 // MARK: editingRect and textRect rightViewRect leftViewRect
-extension EDTBaseTextField {
+extension FBBaseTextField {
     
     
 }

@@ -1,5 +1,5 @@
 //
-//  EDTLeftTitleTextField.swift
+//  FBLeftTitleTextField.swift
 //  TSTFKit_Swift
 //
 //  Created by three stone 王 on 2018/11/22.
@@ -9,8 +9,8 @@
 import UIKit
 import WLToolsKit
 
-@objc (EDTLeftTitleTextField)
-open class EDTLeftTitleTextField: EDTBaseTextField {
+@objc (FBLeftTitleTextField)
+open class FBLeftTitleTextField: FBBaseTextField {
     
     open var leftTitleLabel: UILabel = UILabel()
     @objc (leftTitle)
@@ -50,9 +50,9 @@ open class EDTLeftTitleTextField: EDTBaseTextField {
     
 }
 
-extension EDTLeftTitleTextField {
+extension FBLeftTitleTextField {
     
-    @objc open override func makeAttribute(_ closure: @escaping (EDTLeftTitleTextField) -> ()) {
+    @objc open override func makeAttribute(_ closure: @escaping (FBLeftTitleTextField) -> ()) {
         
         closure(self)
     }

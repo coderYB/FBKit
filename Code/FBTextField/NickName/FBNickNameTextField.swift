@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-@objc (EDTNickNameTextField)
-public final class EDTNickNameTextField: EDTBaseTextField {
+@objc (FBNickNameTextField)
+public final class FBNickNameTextField: FBBaseTextField {
     @objc (margin)
     public var margin: CGFloat = 15
     
@@ -31,6 +31,6 @@ public final class EDTNickNameTextField: EDTBaseTextField {
     public override func commitInit() {
         super.commitInit()
         
-        EDT_editType(.default)
+        FB_editType(.default)
     }
 }

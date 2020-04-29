@@ -10,8 +10,8 @@ import Foundation
 import UIKit
 import WLToolsKit
 
-@objc (EDTVCodeImageTextField)
-public final class EDTVCodeImageTextField: EDTLeftImageTextField {
+@objc (FBVCodeImageTextField)
+public final class FBVCodeImageTextField: FBLeftImageTextField {
     
     public final let vcodeItem: UIButton = UIButton(type: .custom).then {
         
@@ -30,16 +30,16 @@ public final class EDTVCodeImageTextField: EDTLeftImageTextField {
     public override func commitInit() {
         super.commitInit()
         
-        EDT_rightViewMode(.always)
+        FB_rightViewMode(.always)
         
-        EDT_rightView(vcodeItem)
+        FB_rightView(vcodeItem)
         
         vcodeItem.sizeToFit()
     }
 }
 
-@objc (EDTVCodeTitleTextField)
-public final class EDTVCodeTitleTextField: EDTLeftTitleTextField {
+@objc (FBVCodeTitleTextField)
+public final class FBVCodeTitleTextField: FBLeftTitleTextField {
     
     public final let vcodeItem: UIButton = UIButton(type: .custom).then {
         
@@ -58,9 +58,9 @@ public final class EDTVCodeTitleTextField: EDTLeftTitleTextField {
     public override func commitInit() {
         super.commitInit()
         
-        EDT_rightViewMode(.always)
+        FB_rightViewMode(.always)
         
-        EDT_rightView(vcodeItem)
+        FB_rightView(vcodeItem)
         
         vcodeItem.sizeToFit()
     }

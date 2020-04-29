@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-@objc (EDTPasswordImageTextFiled)
-public final class EDTPasswordImageTextFiled: EDTLeftImageTextField {
+@objc (FBPasswordImageTextFiled)
+public final class FBPasswordImageTextFiled: FBLeftImageTextField {
     
     @objc (passwordItem)
     public final let passwordItem: UIButton = UIButton(type: .custom)
@@ -51,19 +51,19 @@ public final class EDTPasswordImageTextFiled: EDTLeftImageTextField {
     public override func commitInit() {
         super.commitInit()
         
-        EDT_rightViewMode(.always)
+        FB_rightViewMode(.always)
     
-        EDT_editType(.secret)
+        FB_editType(.secret)
         
-        EDT_maxLength(18)
+        FB_maxLength(18)
         
-        EDT_secureTextEntry(true)
+        FB_secureTextEntry(true)
         
     }
 }
 
-@objc (EDTPasswordTitleTextFiled)
-public final class EDTPasswordTitleTextFiled: EDTLeftTitleTextField {
+@objc (FBPasswordTitleTextFiled)
+public final class FBPasswordTitleTextFiled: FBLeftTitleTextField {
     
     @objc (passwordItem)
     public final let passwordItem: UIButton = UIButton(type: .custom)
@@ -103,15 +103,15 @@ public final class EDTPasswordTitleTextFiled: EDTLeftTitleTextField {
     public override func commitInit() {
         super.commitInit()
         
-        EDT_rightViewMode(.always)
+        FB_rightViewMode(.always)
         
-        EDT_rightView(passwordItem)
+        FB_rightView(passwordItem)
         
-        EDT_editType(.secret)
+        FB_editType(.secret)
         
-        EDT_maxLength(18)
+        FB_maxLength(18)
         
-        EDT_secureTextEntry(true)
+        FB_secureTextEntry(true)
         
     }
 }
