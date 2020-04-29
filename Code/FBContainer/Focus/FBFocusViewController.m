@@ -47,7 +47,7 @@
         
         _nameLabel.textAlignment = NSTextAlignmentLeft;
         
-        _nameLabel.textColor = [UIColor s_transformToColorByHexColorStr:@"#333333"];
+        _nameLabel.textColor = FB_COLOR_CREATE(@"#333333");
         
     }
     return _nameLabel;
@@ -62,7 +62,7 @@
         
         _timeLabel.textAlignment = NSTextAlignmentLeft;
         
-        _timeLabel.textColor = [UIColor s_transformToColorByHexColorStr:@"#999999"];
+        _timeLabel.textColor = FB_COLOR_CREATE(@"#999999");
     }
     return _timeLabel;
 }

@@ -10,7 +10,9 @@
 @import Masonry;
 @import SDWebImage;
 @import JXTAlertManager;
-
+@import FBCommon;
+@import FBColor;
+@import FBString;
 @interface FBBlackTableViewCell()
 
 @property (nonatomic ,strong) UIImageView *iconImageView;
@@ -47,7 +49,7 @@
         
         _nameLabel.textAlignment = NSTextAlignmentLeft;
         
-        _nameLabel.textColor = [UIColor s_transformToColorByHexColorStr:@"#333333"];
+        _nameLabel.textColor = FB_COLOR_CREATE(@"#333333");
         
     }
     return _nameLabel;
@@ -62,7 +64,7 @@
         
         _timeLabel.textAlignment = NSTextAlignmentLeft;
         
-        _timeLabel.textColor = [UIColor s_transformToColorByHexColorStr:@"#999999"];
+        _timeLabel.textColor = FB_COLOR_CREATE(@"#999999");
     }
     return _timeLabel;
 }
@@ -91,7 +93,7 @@
 - (void)setBlack:(FBBlackBean *)black {
 //    _black = black;
     
-    self.timeLabel.text = [[NSString stringWithFormat:@"%ld",black.intime / 1000] s_convertToDate:SDateTypeDateStyle];
+    self.timeLabel.text = [[NSString stringWithFormat:@"%ld",black.intime / 1000] FBConvertToDate:FBDateTypeDate];
     
     self.nameLabel.text = black.users.nickname;
     
