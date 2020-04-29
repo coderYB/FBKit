@@ -10,7 +10,7 @@
 
 typedef NS_ENUM(NSInteger ,FBConfigureType) {
     /** 游泳  */
-    FBConfigureTypeCar NS_SWIFT_NAME(car) = 0,
+    FBConfigureTypeEstate NS_SWIFT_NAME(estate) = 0,
 };
 
 NS_ASSUME_NONNULL_BEGIN

@@ -1,0 +1,6 @@
+framework module FBTab {
+  umbrella header "FBTab.h"
+
+  export *
+  module * { export * }
+}

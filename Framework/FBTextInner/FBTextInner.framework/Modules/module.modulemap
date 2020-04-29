@@ -1,0 +1,6 @@
+framework module FBTextInner {
+  umbrella header "FBTextInner.h"
+
+  export *
+  module * { export * }
+}

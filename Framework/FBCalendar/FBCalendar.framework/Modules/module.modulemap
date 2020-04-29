@@ -1,0 +1,6 @@
+framework module FBCalendar {
+  umbrella header "FBCalendar.h"
+
+  export *
+  module * { export * }
+}
