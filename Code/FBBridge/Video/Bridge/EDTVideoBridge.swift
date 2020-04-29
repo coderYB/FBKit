@@ -1,5 +1,5 @@
 //
-//  EDTVideoBridge.swift
+//  FBVideoBridge.swift
 //  ZBombBridge
 //
 //  Created by three stone 王 on 2020/3/22.
@@ -7,12 +7,12 @@
 //
 
 import Foundation
-import EDTTransition
-import EDTHud
-import EDTCache
+import FBTransition
+import FBHud
+import FBCache
 
-@objc(EDTVideoActionType)
-public enum EDTVideoActionType: Int ,Codable {
+@objc(FBVideoActionType)
+public enum FBVideoActionType: Int ,Codable {
     
     case myCircle = 0
     
@@ -37,83 +37,83 @@ public enum EDTVideoActionType: Int ,Codable {
     case share = 10
 }
 
-public typealias EDTVideoAction = (_ action: EDTVideoActionType) -> ()
+public typealias FBVideoAction = (_ action: FBVideoActionType) -> ()
 
-@objc (EDTVideoBridge)
-public final class EDTVideoBridge: EDTBaseBridge {
+@objc (FBVideoBridge)
+public final class FBVideoBridge: FBBaseBridge {
     
-    var viewModel: EDTVideoViewModel!
+    var viewModel: FBVideoViewModel!
     
-    weak var vc: EDTTViewController!
+    weak var vc: FBTViewController!
 }
-extension EDTVideoBridge {
+extension FBVideoBridge {
     
-    @objc public func createVideo(_ vc: EDTTViewController) {
+    @objc public func createVideo(_ vc: FBTViewController) {
         
         self.vc = vc
     }
 }
-extension EDTVideoBridge {
+extension FBVideoBridge {
     
-    @objc public func addBlack(_ OUsEncoded: String,targetEncoded: String ,content: String ,action: @escaping EDTVideoAction) {
+    @objc public func addBlack(_ OUsEncoded: String,targetEncoded: String ,content: String ,action: @escaping FBVideoAction) {
         
-        if !EDTAccountCache.default.isLogin() {
+        if !FBAccountCache.default.isLogin() {
             
             action(.unLogin)
             
             return
         }
         
-        EDTHud.show(withStatus: "添加黑名单中...")
+        FBHud.show(withStatus: "添加黑名单中...")
         
-        EDTVideoViewModel
+        FBVideoViewModel
             .addBlack(OUsEncoded, targetEncoded: targetEncoded, content: content)
             .drive(onNext: { (result) in
                 
-                EDTHud.pop()
+                FBHud.pop()
                 
                 switch result {
                 case .ok(let msg):
                 
-                    EDTHud.showInfo(msg)
+                    FBHud.showInfo(msg)
                     
                     action(.black)
                     
                 case .failed(let msg):
                     
-                    EDTHud.showInfo(msg)
+                    FBHud.showInfo(msg)
                 default:
                     break
                 }
             })
             .disposed(by: disposed)
     }
-    @objc public func focus(_ uid: String ,encode: String ,isFocus: Bool,action: @escaping EDTVideoAction) {
+    @objc public func focus(_ uid: String ,encode: String ,isFocus: Bool,action: @escaping FBVideoAction) {
         
-        if !EDTAccountCache.default.isLogin() {
+        if !FBAccountCache.default.isLogin() {
             
             action(.unLogin)
             
             return
         }
         
-        EDTHud.show(withStatus: isFocus ? "取消关注中..." : "关注中...")
+        FBHud.show(withStatus: isFocus ? "取消关注中..." : "关注中...")
         
-        EDTVideoViewModel
+        FBVideoViewModel
             .focus(uid, encode: encode)
             .drive(onNext: { (result) in
                 
-                EDTHud.pop()
+                FBHud.pop()
                 
                 switch result {
                 case .ok:
                     
                     action(.focus)
                     
-                    EDTHud.showInfo(isFocus ? "取消关注成功" : "关注成功")
+                    FBHud.showInfo(isFocus ? "取消关注成功" : "关注成功")
                 case .failed(let msg):
                     
-                    EDTHud.showInfo(msg)
+                    FBHud.showInfo(msg)
                 default:
                     break
                 }
@@ -122,32 +122,32 @@ extension EDTVideoBridge {
         
     }
 
-    @objc public func like(_ encoded: String,isLike: Bool,action: @escaping EDTVideoAction) {
+    @objc public func like(_ encoded: String,isLike: Bool,action: @escaping FBVideoAction) {
         
-        if !EDTAccountCache.default.isLogin() {
+        if !FBAccountCache.default.isLogin() {
             
             action(.unLogin)
             
             return
         }
         
-        EDTHud.show(withStatus: isLike ? "取消点赞中..." : "点赞中...")
+        FBHud.show(withStatus: isLike ? "取消点赞中..." : "点赞中...")
         
-        EDTVideoViewModel
+        FBVideoViewModel
             .like(encoded, isLike: !isLike)
             .drive(onNext: {(result) in
                 
-                EDTHud.pop()
+                FBHud.pop()
                 
                 switch result {
                 case .ok(let msg):
                 
                     action(.like)
                     
-                    EDTHud.showInfo(msg)
+                    FBHud.showInfo(msg)
                 case .failed(let msg):
                     
-                    EDTHud.showInfo(msg)
+                    FBHud.showInfo(msg)
                 default:
                     break
                 }

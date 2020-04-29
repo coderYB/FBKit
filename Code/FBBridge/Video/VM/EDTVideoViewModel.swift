@@ -1,5 +1,5 @@
 //
-//  EDTVideoViewModel.swift
+//  FBVideoViewModel.swift
 //  ZBombBridge
 //
 //  Created by three stone 王 on 2020/3/22.
@@ -7,15 +7,15 @@
 //
 
 import Foundation
-import EDTViewModel
+import FBViewModel
 import RxCocoa
 import RxSwift
-import EDTResult
-import EDTRReq
-import EDTApi
-import EDTError
+import FBResult
+import FBRReq
+import FBApi
+import FBError
 
-struct EDTVideoViewModel: EDTViewModel {
+struct FBVideoViewModel: FBViewModel {
     
     var input: WLInput
     
@@ -35,23 +35,23 @@ struct EDTVideoViewModel: EDTViewModel {
         self.output = WLOutput()
     }
     
-    static func addBlack(_ OUsEncoded: String,targetEncoded: String ,content: String) -> Driver<EDTResult> {
+    static func addBlack(_ OUsEncoded: String,targetEncoded: String ,content: String) -> Driver<FBResult> {
         
-        return EDTVoidResp(EDTApi.addBlack(OUsEncoded, targetEncoded: targetEncoded, content: content))
-            .map({ _ in EDTResult.ok("添加黑名单成功")})
-            .asDriver(onErrorRecover: { return Driver.just(EDTResult.failed(($0 as! EDTError).description.0)) })
+        return FBVoidResp(FBApi.addBlack(OUsEncoded, targetEncoded: targetEncoded, content: content))
+            .map({ _ in FBResult.ok("添加黑名单成功")})
+            .asDriver(onErrorRecover: { return Driver.just(FBResult.failed(($0 as! FBError).description.0)) })
     }
-    static func focus(_ uid: String ,encode: String) -> Driver<EDTResult> {
+    static func focus(_ uid: String ,encode: String) -> Driver<FBResult> {
         
-        return EDTVoidResp(EDTApi.focus(uid, targetEncoded: encode))
-            .flatMapLatest({ return Driver.just(EDTResult.ok("关注或取消关注成功")) })
-            .asDriver(onErrorRecover: { return Driver.just(EDTResult.failed(($0 as! EDTError).description.0)) })
+        return FBVoidResp(FBApi.focus(uid, targetEncoded: encode))
+            .flatMapLatest({ return Driver.just(FBResult.ok("关注或取消关注成功")) })
+            .asDriver(onErrorRecover: { return Driver.just(FBResult.failed(($0 as! FBError).description.0)) })
     }
     
-    static func like(_ encoded: String ,isLike: Bool) -> Driver<EDTResult> {
+    static func like(_ encoded: String ,isLike: Bool) -> Driver<FBResult> {
         
-        return EDTVoidResp(EDTApi.like(encoded))
-            .flatMapLatest({ return Driver.just(EDTResult.ok( isLike ? "点赞成功" : "取消点赞成功")) })
-            .asDriver(onErrorRecover: { return Driver.just(EDTResult.failed(($0 as! EDTError).description.0)) })
+        return FBVoidResp(FBApi.like(encoded))
+            .flatMapLatest({ return Driver.just(FBResult.ok( isLike ? "点赞成功" : "取消点赞成功")) })
+            .asDriver(onErrorRecover: { return Driver.just(FBResult.failed(($0 as! FBError).description.0)) })
     }
 }
