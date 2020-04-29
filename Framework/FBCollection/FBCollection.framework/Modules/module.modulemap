@@ -1,0 +1,6 @@
+framework module FBCollection {
+  umbrella header "FBCollection.h"
+
+  export *
+  module * { export * }
+}
