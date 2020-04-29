@@ -113,10 +113,10 @@ Pod::Spec.new do |spec|
   end
   
   # 注册/登陆
-  spec.subspec 'Reg' do |reg|
+  spec.subspec 'SwiftLogin' do |swiftLogin|
     
-    reg.subspec 'VM' do |vm|
-      vm.source_files = "Code/FBBridge/Reg/VM/*.{swift}"
+    swiftLogin.subspec 'VM' do |vm|
+      vm.source_files = "Code/FBBridge/SwiftLogin/VM/*.{swift}"
       vm.dependency 'RxCocoa'
       vm.dependency 'FBViewModel'
       vm.dependency 'FBCheck'
@@ -126,9 +126,9 @@ Pod::Spec.new do |spec|
       vm.dependency 'FBError'
     end
     
-    reg.subspec 'Bridge' do |bridge|
-      bridge.source_files = "Code/FBBridge/Reg/Bridge/*.{swift}"
-      bridge.dependency 'FBBridge/Reg/VM'
+    swiftLogin.subspec 'Bridge' do |bridge|
+      bridge.source_files = "Code/FBBridge/SwiftLogin/Bridge/*.{swift}"
+      bridge.dependency 'FBBridge/SwiftLogin/VM'
       bridge.dependency 'FBCocoa/Button'
       bridge.dependency 'FBHud'
       bridge.dependency 'FBBase'

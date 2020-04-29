@@ -16,6 +16,6 @@ FOUNDATION_EXPORT const unsigned char FBStringVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FBString/PublicHeader.h>
 
-#import <FBString/FBStringCata.h>
+#import <FBString/FBStringExtensions.h>
 
 #define FB_COLOR_FORMAT_STRING(arg1,arg2) [NSString stringWithFormat:@"%@%@",arg1,arg2]
