@@ -1,0 +1,6 @@
+framework module FBYY {
+  umbrella header "FBYY.h"
+
+  export *
+  module * { export * }
+}

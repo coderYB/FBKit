@@ -1,0 +1,6 @@
+framework module FBUpload {
+  umbrella header "FBUpload.h"
+
+  export *
+  module * { export * }
+}
