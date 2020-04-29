@@ -1,0 +1,6 @@
+framework module FBTable {
+  umbrella header "FBTable.h"
+
+  export *
+  module * { export * }
+}
