@@ -1,6 +1,6 @@
 //
-//  DCTFReq.swift
-//  DCTFReq
+//  FBFReq.swift
+//  FBFReq
 //
 //  Created by 王磊 on 2020/4/16.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -10,10 +10,10 @@ import Foundation
 import Alamofire
 import RxSwift
 import WLToolsKit
-import DCTOR
+import FBObservableReq
 
-// MARK: onSendReq
-public func onSendReq<T : DCTOR>(_ req: T) -> Observable<[String:Any]> {
+// MARK: FBSendReq
+public func FBSendReq<T : FBObservableReq>(_ req: T) -> Observable<[String:Any]> {
     
     return Observable<[String:Any]>.create({ (observer) -> Disposable in
         
@@ -36,8 +36,8 @@ public func onSendReq<T : DCTOR>(_ req: T) -> Observable<[String:Any]> {
         return Disposables.create { }
     })
 }
-// MARK: WLUploadStatus
-public enum WLUploadStatus {
+// MARK: FBUploadStatus
+public enum FBUploadStatus {
     
     case begin
     
@@ -49,9 +49,9 @@ public enum WLUploadStatus {
 }
 
 // MARK: uploadImage
-public func uploadImage<T : DCTOR>(_ req: T,img: UIImage ,filename: String) -> Observable<WLUploadStatus> {
+public func FBUploadImage<T : FBObservableReq>(_ req: T,img: UIImage ,filename: String) -> Observable<FBUploadStatus> {
     
-    return Observable<WLUploadStatus>.create({ (observer) -> Disposable in
+    return Observable<FBUploadStatus>.create({ (observer) -> Disposable in
         
         AF.upload(multipartFormData: { (form) in
             let data = UIImage.compressImage(img, maxLength: 50 * 1024)
@@ -77,12 +77,12 @@ public func uploadImage<T : DCTOR>(_ req: T,img: UIImage ,filename: String) -> O
     })
 }
 // MARK: uploadVideo
-public func uploadVideo<T : DCTOR>(_ req: T ,data: Data,filename: String) -> Observable<WLUploadStatus> {
+public func FBUploadVideo<T : FBObservableReq>(_ req: T ,data: Data,filename: String) -> Observable<FBUploadStatus> {
     
-    return Observable<WLUploadStatus>.create({ (observer) -> Disposable in
+    return Observable<FBUploadStatus>.create({ (observer) -> Disposable in
         
         AF.upload(multipartFormData: { (form) in
-            observer.onNext(WLUploadStatus.begin)
+            observer.onNext(FBUploadStatus.begin)
             
             form.append("file".data(using: .utf8)!, withName: "name")
             

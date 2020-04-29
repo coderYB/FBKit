@@ -12,7 +12,7 @@ import RxCocoa
 
 extension Reactive where Base: UIButton {
     
-    public var EDTSkipTitle: Binder<String> {
+    public var FBSkipTitle: Binder<String> {
         
         return Binder(self.base) {
             
@@ -25,7 +25,7 @@ extension Reactive where Base: UIButton {
 
 extension Reactive where Base: UIButton {
     
-    public var EDTSms: Binder<(Bool ,String)> {
+    public var FBSms: Binder<(Bool ,String)> {
         return Binder(self.base) { item, arg in
             
             item.isEnabled = arg.0

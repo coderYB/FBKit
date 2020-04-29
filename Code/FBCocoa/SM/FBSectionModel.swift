@@ -9,7 +9,7 @@
 import Foundation
 import RxDataSources
 
-public struct EDTSectionModel<Section, ItemType> {
+public struct FBSectionModel<Section, ItemType> {
     public var model: Section
     public var items: [Item]
     
@@ -19,7 +19,7 @@ public struct EDTSectionModel<Section, ItemType> {
     }
 }
 
-extension EDTSectionModel: SectionModelType {
+extension FBSectionModel: SectionModelType {
     public typealias Identity = Section
     public typealias Item = ItemType
     
@@ -28,15 +28,15 @@ extension EDTSectionModel: SectionModelType {
     }
 }
 
-extension EDTSectionModel: CustomStringConvertible {
+extension FBSectionModel: CustomStringConvertible {
     
     public var description: String {
         return "\(self.model) -> \(items)"
     }
 }
 
-extension EDTSectionModel {
-    public init(original: EDTSectionModel<Section, Item>, items: [Item]) {
+extension FBSectionModel {
+    public init(original: FBSectionModel<Section, Item>, items: [Item]) {
         self.model = original.model
         self.items = items
     }

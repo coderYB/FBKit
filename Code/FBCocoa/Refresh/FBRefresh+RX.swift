@@ -13,7 +13,7 @@ import RxSwift
 
 public extension Reactive where Base: MJRefreshComponent {
     
-    var EDTRefreshing: ControlEvent<Void> {
+    var FBRefreshing: ControlEvent<Void> {
         let source: Observable<Void> = Observable.create {
             [weak control = self.base] observer  in
             if let control = control {
@@ -27,7 +27,7 @@ public extension Reactive where Base: MJRefreshComponent {
     }
     
     //停止刷新
-    var EDTEndRefreshing: Binder<Bool> {
+    var FBEndRefreshing: Binder<Bool> {
         return Binder(base) { refresh, isEnd in
             if isEnd {
                 refresh.endRefreshing()

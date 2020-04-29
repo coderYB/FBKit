@@ -1,5 +1,5 @@
 //
-//  EDTAnimationSetionModel.swift
+//  FBAnimationSetionModel.swift
 //  ZCocoa
 //
 //  Created by three stone 王 on 2019/8/29.
@@ -9,7 +9,7 @@
 import Foundation
 import RxDataSources
 
-public struct EDTAnimationSetionModel<ItemType: IdentifiableType & Equatable> {
+public struct FBAnimationSetionModel<ItemType: IdentifiableType & Equatable> {
     public var header: String
     public var items: [Item]
     
@@ -19,14 +19,14 @@ public struct EDTAnimationSetionModel<ItemType: IdentifiableType & Equatable> {
     }
 }
 
-extension EDTAnimationSetionModel : AnimatableSectionModelType {
+extension FBAnimationSetionModel : AnimatableSectionModelType {
     public typealias Item = ItemType
     
     public var identity: String {
         return header
     }
     
-    public init(original: EDTAnimationSetionModel, items: [Item]) {
+    public init(original: FBAnimationSetionModel, items: [Item]) {
         self = original
         self.items = items
     }
