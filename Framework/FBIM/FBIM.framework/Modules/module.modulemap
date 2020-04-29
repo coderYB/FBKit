@@ -1,0 +1,6 @@
+framework module FBIM {
+  umbrella header "FBIM.h"
+
+  export *
+  module * { export * }
+}
