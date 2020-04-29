@@ -1,5 +1,5 @@
 //
-//  EDTBlackBean.swift
+//  FBBlackBean.swift
 //  HZTC
 //
 //  Created by three stone 王 on 2019/3/21.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (EDTBlackBean)
-public class EDTBlackBean: NSObject,Mappable,IdentifiableType {
+@objc (FBBlackBean)
+public class FBBlackBean: NSObject,Mappable,IdentifiableType {
     @objc public var identity: String = ""
     
     public typealias Identity = String
@@ -40,7 +40,7 @@ public class EDTBlackBean: NSObject,Mappable,IdentifiableType {
         
         content <- map["content"]
     }
-     @objc public var users: EDTUserBean!
+     @objc public var users: FBUserBean!
     
      @objc public var tableName: String = ""
     

@@ -1,5 +1,5 @@
 //
-//  EDTAreaBean.swift
+//  FBAreaBean.swift
 //  DAddressDemo
 //
 //  Created by three stone 王 on 2019/7/16.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (EDTAreaBean)
-public class EDTAreaBean: NSObject,Mappable ,IdentifiableType {
+@objc (FBAreaBean)
+public class FBAreaBean: NSObject,Mappable ,IdentifiableType {
     
     public var identity: String = NSUUID().uuidString
     
@@ -33,7 +33,7 @@ public class EDTAreaBean: NSObject,Mappable ,IdentifiableType {
     
     @objc public var typename: String = ""
     
-    @objc public var addrList: [EDTAreaBean] = []
+    @objc public var addrList: [FBAreaBean] = []
     
     required public init?(map: Map) { }
     

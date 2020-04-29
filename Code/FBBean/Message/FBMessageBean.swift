@@ -1,6 +1,6 @@
 //
-//  EDTMessageBean.swift
-//  EDTBean
+//  FBMessageBean.swift
+//  FBBean
 //
 //  Created by 王磊 on 2020/4/14.
 //  Copyright © 2020 王磊. All rights reserved.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (EDTMessageBean)
-public final class EDTMessageBean: NSObject,Mappable,IdentifiableType {
+@objc (FBMessageBean)
+public final class FBMessageBean: NSObject,Mappable,IdentifiableType {
     
     public var identity: String = NSUUID().uuidString
     

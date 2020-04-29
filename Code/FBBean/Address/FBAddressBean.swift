@@ -1,5 +1,5 @@
 //
-//  EDTAddressBean.swift
+//  FBAddressBean.swift
 //  DStoreDemo
 //
 //  Created by three stone 王 on 2019/7/16.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (EDTAddressBean)
-public class EDTAddressBean: NSObject,Mappable,IdentifiableType {
+@objc (FBAddressBean)
+public class FBAddressBean: NSObject,Mappable,IdentifiableType {
     public var identity: String = ""
     
     public typealias Identity = String

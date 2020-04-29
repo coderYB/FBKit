@@ -1,5 +1,5 @@
 //
-//  EDTCommodityBean.swift
+//  FBCommodityBean.swift
 //  DStoreDemo
 //
 //  Created by three stone 王 on 2019/7/18.
@@ -11,8 +11,8 @@ import ObjectMapper
 import RxDataSources
 import WLToolsKit
 
-@objc (EDTCommodityBean)
-public class EDTCommodityBean: NSObject, Mappable , IdentifiableType{
+@objc (FBCommodityBean)
+public class FBCommodityBean: NSObject, Mappable , IdentifiableType{
     
     public var identity: String = ""
     
@@ -57,20 +57,20 @@ public class EDTCommodityBean: NSObject, Mappable , IdentifiableType{
     
     @objc public var tag: String = ""
     
-    @objc public var users: EDTUserBean!
+    @objc public var users: FBUserBean!
     
     @objc public var countComment: Int = Int.max
     
-    @objc public var contentMap: [EDTKeyValueBean] {
+    @objc public var contentMap: [FBKeyValueBean] {
         
         let res = WLJsonCast.cast(argu: content) as! [[String: String]]
         
-        return res.map({ EDTKeyValueBean(JSON: $0)! })
+        return res.map({ FBKeyValueBean(JSON: $0)! })
     }
     
-    @objc public var imgs: [EDTKeyValueBean] {
+    @objc public var imgs: [FBKeyValueBean] {
         
-        var result: [EDTKeyValueBean] = []
+        var result: [FBKeyValueBean] = []
         
         for item in contentMap {
             

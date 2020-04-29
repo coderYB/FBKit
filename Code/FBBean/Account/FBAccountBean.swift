@@ -1,5 +1,5 @@
 //
-//  EDTAccountBean.swift
+//  FBAccountBean.swift
 //  ZUserKit
 //
 //  Created by three stone 王 on 2019/3/15.
@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-public struct EDTAccountBean: Mappable {
+public struct FBAccountBean: Mappable {
     
     public var token: String = ""
     

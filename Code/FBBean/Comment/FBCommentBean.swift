@@ -1,5 +1,5 @@
 //
-//  EDTCommentBean.swift
+//  FBCommentBean.swift
 //  ZBean
 //
 //  Created by three stone 王 on 2019/8/30.
@@ -9,8 +9,8 @@
 import Foundation
 import ObjectMapper
 import RxDataSources
-@objc (EDTCommentBean)
-public final class EDTCommentBean: NSObject,Mappable,IdentifiableType {
+@objc (FBCommentBean)
+public final class FBCommentBean: NSObject,Mappable,IdentifiableType {
     
     public var identity: String = ""
     
@@ -37,7 +37,7 @@ public final class EDTCommentBean: NSObject,Mappable,IdentifiableType {
     
     @objc public var content: String = ""
     
-    @objc public var users: EDTUserBean!
+    @objc public var users: FBUserBean!
     
     @objc public var encoded: String = ""
     

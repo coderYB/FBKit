@@ -1,5 +1,5 @@
 //
-//  EDTFocusBean.swift
+//  FBFocusBean.swift
 //  WLUserKitDemo
 //
 //  Created by three stone 王 on 2019/4/4.
@@ -10,8 +10,8 @@ import Foundation
 import ObjectMapper
 import RxDataSources
 
-@objc (EDTFocusBean)
-public class EDTFocusBean: NSObject,Mappable,IdentifiableType {
+@objc (FBFocusBean)
+public class FBFocusBean: NSObject,Mappable,IdentifiableType {
     @objc public var identity: String = ""
     
     public typealias Identity = String
@@ -40,7 +40,7 @@ public class EDTFocusBean: NSObject,Mappable,IdentifiableType {
         
         content <- map["content"]
     }
-    @objc public var users: EDTUserBean!
+    @objc public var users: FBUserBean!
     
     @objc public var tableName: String = ""
     

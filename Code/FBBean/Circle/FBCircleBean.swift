@@ -1,5 +1,5 @@
 //
-//  EDTCircleBean.swift
+//  FBCircleBean.swift
 //  WLUserKitDemo
 //
 //  Created by three stone 王 on 2019/4/30.
@@ -12,8 +12,8 @@ import RxDataSources
 import WLToolsKit
 import UIKit
 
-@objc (EDTCircleBean)
-public class EDTCircleBean: NSObject, Mappable , IdentifiableType {
+@objc (FBCircleBean)
+public class FBCircleBean: NSObject, Mappable , IdentifiableType {
     
     @objc public var identity: String = ""
     
@@ -62,17 +62,17 @@ public class EDTCircleBean: NSObject, Mappable , IdentifiableType {
     
     @objc public var tag: String = ""
     
-    @objc public var users: EDTUserBean!
+    @objc public var users: FBUserBean!
     
     @objc public var countComment: Int = Int.max
     
     @objc public var isattention: Bool = false
     
-    @objc public var contentMap: [EDTKeyValueBean] {
+    @objc public var contentMap: [FBKeyValueBean] {
         
         let res = WLJsonCast.cast(argu: content) as! [[String: String]]
         
-        return res.map({ EDTKeyValueBean(JSON: $0)! })
+        return res.map({ FBKeyValueBean(JSON: $0)! })
     }
     
     @objc public var videoImage: UIImage!
