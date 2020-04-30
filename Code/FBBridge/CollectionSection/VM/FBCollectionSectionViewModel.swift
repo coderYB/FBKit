@@ -48,6 +48,8 @@ public final class FBCollectionItemBean: NSObject {
     
     @objc public var placeholder: String = ""
     
+    @objc public var image: String = ""
+    
     @objc public var value: String = ""
     
     @objc public static func createItem(_ iTag: Int,title: String ,icon: String) -> FBCollectionItemBean {
