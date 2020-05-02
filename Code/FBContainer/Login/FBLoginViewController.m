@@ -432,7 +432,7 @@
     
 #endif
     
-#if ZForceLogin
+#if FBCONTAINERFORCELOGIN
     
     self.backItem.hidden = true;
 #else

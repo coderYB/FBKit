@@ -52,6 +52,8 @@ public enum FBUserCenterActionType: Int ,Codable {
     case service
     
     case version
+    
+    case car
 }
 
 public typealias FBUserCenterAction = (_ action: FBUserCenterActionType ) -> ()
@@ -102,7 +104,7 @@ extension FBUserCenterBridge {
         self.vc = vc
         
         let input = FBUserCenterViewModel.WLInput(modelSelect: vc.collectionView.rx.modelSelected(FBUserCenterBean.self),
-                                                   itemSelect: vc.collectionView.rx.itemSelected)
+                                                  itemSelect: vc.collectionView.rx.itemSelected)
         
         viewModel = FBUserCenterViewModel(input, disposed: disposed)
         
@@ -144,6 +146,7 @@ extension FBUserCenterBridge {
                 case .feedBack: centerAction(.feedBack)
                 case .service: centerAction(.service)
                 case .header: centerAction(isLogin ? .header : .unLogin)
+                case .car: centerAction(isLogin ? .car : .unLogin)
                 case .share: centerAction(.share)
                 case .version: centerAction(.version)
                 case .contactUS: centerAction(.contactUS)

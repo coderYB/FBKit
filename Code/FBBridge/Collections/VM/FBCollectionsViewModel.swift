@@ -16,13 +16,13 @@ import FBRReq
 import FBApi
 import FBError
 
-struct FBCollectionsViewModel: FBViewModel {
+public struct FBCollectionsViewModel: FBViewModel {
     
-    var input: WLInput
+    public var input: WLInput
     
-    var output: WLOutput
+    public var output: WLOutput
     
-    struct WLInput {
+    public struct WLInput {
         
         let isMy: Bool
         
@@ -39,11 +39,11 @@ struct FBCollectionsViewModel: FBViewModel {
         let tag: String
     }
     
-    struct WLOutput {
+    public struct WLOutput {
         
         let zip: Observable<(FBCircleBean,IndexPath)>
         
-        let collectionData: BehaviorRelay<[FBCircleBean]> = BehaviorRelay<[FBCircleBean]>(value: [])
+        public let collectionData: BehaviorRelay<[FBCircleBean]> = BehaviorRelay<[FBCircleBean]>(value: [])
         
         let endHeaderRefreshing: Driver<FBResult>
         
@@ -60,7 +60,7 @@ struct FBCollectionsViewModel: FBViewModel {
         let headerRefreshData = input
             .headerRefresh
             .flatMapLatest({_ in
-  
+                
                 return FBArrayResp(input.isMy ? FBApi.fetchMyList(input.tag, page: 1) : FBApi.fetchList(input.tag, page: 1))
                     .mapArray(type: FBCircleBean.self)
                     .map({ return $0.count > 0 ? FBResult.fetchList($0) : FBResult.empty })
@@ -158,7 +158,7 @@ struct FBCollectionsViewModel: FBViewModel {
     }
     
     static func addBlack(_ OUsEncoded: String,targetEncoded: String ,content: String) -> Driver<FBResult> {
-
+        
         return FBVoidResp(FBApi.addBlack(OUsEncoded, targetEncoded: targetEncoded, content: content))
             .map({ _ in FBResult.ok("添加黑名单成功")})
             .asDriver(onErrorRecover: { return Driver.just(FBResult.failed(($0 as! FBError).description.0)) })

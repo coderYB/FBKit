@@ -576,6 +576,10 @@
     [self.backLoginItem setTitleColor:FB_ALPHA_COLOR_CREATE(FB_COLOR_FORMAT_STRING(@"#333333", @"80")) forState:UIControlStateHighlighted];
     
     self.backLoginItem.layer.borderColor = [UIColor clearColor].CGColor;
+    
+    [self.vcode setLeftImageFrame:CGRectMake(0, 0, 80, 48)];
+    
+    [self.phone setLeftImageFrame:CGRectMake(0, 0, 80, 48)];
 #elif FBLoginTwo
     
     CGFloat w = FB_VIEWCONTROLLER_WIDTH;

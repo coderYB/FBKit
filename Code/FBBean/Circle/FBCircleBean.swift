@@ -76,4 +76,6 @@ public class FBCircleBean: NSObject, Mappable , IdentifiableType {
     }
     
     @objc public var videoImage: UIImage!
+    
+    @objc public override init() {}
 }

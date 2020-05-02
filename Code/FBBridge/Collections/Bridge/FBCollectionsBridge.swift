@@ -49,9 +49,11 @@ public final class FBCollectionsBridge: FBBaseBridge {
     
     var dataSource: RxCollectionViewSectionedAnimatedDataSource<Section>!
     
-    var viewModel: FBCollectionsViewModel!
+    public var viewModel: FBCollectionsViewModel!
     
     weak var vc: FBCollectionLoadingViewController!
+    
+    var moreSection: Bool = false
 }
 
 extension FBCollectionsBridge {
@@ -60,12 +62,14 @@ extension FBCollectionsBridge {
         
         self.vc = vc
         
+        self.moreSection = moreSection
+        
         let input = FBCollectionsViewModel.WLInput(isMy: isMy,
-                                                    modelSelect: vc.collectionView.rx.modelSelected(FBCircleBean.self),
-                                                    itemSelect: vc.collectionView.rx.itemSelected,
-                                                    headerRefresh: vc.collectionView.mj_header!.rx.FBRefreshing.asDriver(),
-                                                    footerRefresh: vc.collectionView.mj_footer!.rx.FBRefreshing.asDriver(),
-                                                    tag: tag)
+                                                   modelSelect: vc.collectionView.rx.modelSelected(FBCircleBean.self),
+                                                   itemSelect: vc.collectionView.rx.itemSelected,
+                                                   headerRefresh: vc.collectionView.mj_header!.rx.FBRefreshing.asDriver(),
+                                                   footerRefresh: vc.collectionView.mj_footer!.rx.FBRefreshing.asDriver(),
+                                                   tag: tag)
         
         viewModel = FBCollectionsViewModel(input, disposed: disposed)
         
@@ -147,16 +151,38 @@ extension FBCollectionsBridge {
 
 extension FBCollectionsBridge {
     
-    @objc public func insertCollectionData(_ collectionData: FBCircleBean) {
+    @objc public func updateCircle(_ circle: FBCircleBean ,forIp ip: IndexPath) {
         
         var values = viewModel.output.collectionData.value
         
-        values.insert(collectionData, at: 0)
+        if moreSection {
+            
+            values.replaceSubrange(ip.section..<ip.section+1, with: [circle])
+        } else {
+            
+            values.replaceSubrange(ip.row..<ip.row+1, with: [circle])
+        }
+        
+        viewModel.output.collectionData.accept(values)
+        
+        vc.collectionView.reloadItems(at: [ip])
+    }
+    
+    @objc public func insertCircle(_ circle: FBCircleBean) {
+        
+        var values = viewModel.output.collectionData.value
+        
+        values.insert(circle, at: 0)
+        
+        if values.count == 1 {
+            
+            vc.collectionEmptyHidden()
+        }
         
         viewModel.output.collectionData.accept(values)
     }
     
-    @objc public func fetchObj(_ ip: IndexPath) -> FBCircleBean? {
+    @objc public func fetchCircle(_ ip: IndexPath) -> FBCircleBean? {
         
         guard let dataSource = dataSource else { return nil }
         
@@ -169,7 +195,14 @@ extension FBCollectionsBridge {
         
         if let idx = values.firstIndex(where: { $0.encoded == circle.encoded }) {
             
-            return IndexPath(item: 0, section: idx)
+            if moreSection {
+                
+                return IndexPath(item: 0, section: idx)
+            } else {
+                
+                return IndexPath(item: idx, section: 0)
+            }
+        
         }
         return IndexPath(item: 0, section: 0)
         
@@ -192,9 +225,9 @@ extension FBCollectionsBridge {
         }
         
         self.viewModel.output.collectionData.accept(values)
-
+        
         if values.isEmpty {
-
+            
             self.vc.collectionEmptyShow()
         }
     }
