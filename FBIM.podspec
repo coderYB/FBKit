@@ -30,6 +30,5 @@ Pod::Spec.new do |spec|
   
   spec.dependency 'RongCloudIM/IMKit', '~> 2.10.4'
   spec.dependency 'RongCloudIM/IMLib', '~> 2.10.4'
-  spec.dependency 'FBReq'
   
 end
