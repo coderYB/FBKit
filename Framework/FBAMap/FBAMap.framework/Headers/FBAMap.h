@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char FBAMapVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <FBAMap/PublicHeader.h>
 
-#import <FBAMap/FBAMapTViewController.h>
+#import <FBAMap/FBAMapViewController.h>
