@@ -400,7 +400,7 @@ extension FBBaseTextField {
                 }
                 //再判断长度
                 
-                if resultText.count > maxLength && target.value(forKey: "markFBextRange") == nil {
+                if resultText.count > maxLength && target.value(forKey: "markedTextRange") == nil {
                     
                     while resultText.count > maxLength {
                         
