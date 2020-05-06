@@ -18,7 +18,7 @@
 
 #define FBAPPKEY "92f92b1ce9a34f0db75ccc05b79d295a"
 
-#define FBDOMAIN "http://zhihw.ecsoi.com/"
+#define FBDOMAIN "http://47.96.25.69:8086/"
 
 #elif FBCONFIGURETYPETHERMAL
 

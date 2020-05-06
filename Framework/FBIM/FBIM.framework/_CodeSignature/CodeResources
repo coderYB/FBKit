@@ -14,11 +14,11 @@
 		</data>
 		<key>Headers/FBConversationViewController.h</key>
 		<data>
-		UT0Pq0UQcBJOT426xKRahYVsFT8=
+		JN1xJWrRUjFr6P8nxvEEZMZddoM=
 		</data>
 		<key>Headers/FBIM.h</key>
 		<data>
-		tnQlgUd71JI1ACmz8OWadzDdm1M=
+		0YE4qCTnd8M39L3QhSoeTgp+cVQ=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -1545,22 +1545,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			UT0Pq0UQcBJOT426xKRahYVsFT8=
+			JN1xJWrRUjFr6P8nxvEEZMZddoM=
 			</data>
 			<key>hash2</key>
 			<data>
-			ip52sxkeZb7s9A1e4Ehgj6iDETcY3mXT6WzBUTlZyZg=
+			jeRpMuWtG9V6XXS9WeQrsYTuNRIbSF2eG7DFMrUNKZs=
 			</data>
 		</dict>
 		<key>Headers/FBIM.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tnQlgUd71JI1ACmz8OWadzDdm1M=
+			0YE4qCTnd8M39L3QhSoeTgp+cVQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			YWA6ojj0voqsnZtehKc3p6NELxo1Ed1xY3/8FuV3gTo=
+			Qd9cpEMwdARX/9pwa3xC6x/TL22UDIAwoRH6tENdLxM=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
