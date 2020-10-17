@@ -22,6 +22,7 @@ public final class FBAreaHeaderBridge: FBBaseBridge {
     
     var dataSource: RxCollectionViewSectionedReloadDataSource<Section>!
 }
+
 // MARK: skip item 101 pagecontrol 102
 extension FBAreaHeaderBridge {
     
@@ -56,7 +57,7 @@ extension FBAreaHeaderBridge {
             })
             .disposed(by: disposed)
     }
-    
+
     @objc public func addheader(_ header: FBAreaHeaderBean) {
         
         var values = viewModel.output.tableData.value

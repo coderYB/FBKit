@@ -69,9 +69,9 @@ struct FBReportViewModel: FBViewModel {
         
         let encode: String
         
-        /*  序列*/
+        /*  举报选中序列*/
         let report: Driver<String>
-        
+        /*  举报填写内容序列*/
         let content: Driver<String>
     }
     
@@ -118,5 +118,4 @@ struct FBReportViewModel: FBViewModel {
         
         self.output = output
     }
-    
 }

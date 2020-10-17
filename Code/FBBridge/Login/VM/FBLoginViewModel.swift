@@ -74,14 +74,14 @@ public struct FBLoginViewModel: FBViewModel {
                 switch FBCheckUsernameAndPassword($0.0, password: $0.1) {
                 case .ok:
 
-                    return FBDictResp(FBApi.login($0.0,password: $0.1))
-                        .mapObject(type: FBAccountBean.self)
+                    return FBDictResp(FBApi.login($0.0,password: $0.1)) // 登陆请求 
+                        .mapObject(type: FBAccountBean.self) // 解析
                         .map({ FBAccountCache.default.saveAccount(acc: $0) }) // 存储account
-                        .map({ $0.toJSON()})
-                        .mapObject(type: FBUserBean.self)
-                        .map({ FBUserInfoCache.default.saveUser(data: $0) })
-                        .map({ _ in FBResult.logined })
-                        .asDriver(onErrorRecover: { return Driver.just(FBResult.failed(($0 as! FBError).description.0)) })
+                        .map({ $0.()}) // 反转
+                        .mapObject(typetoJSON: FBUserBean.self) // 解析
+                        .map({ FBUserInfoCache.default.saveUser(data: $0) }) // 存储user
+                        .map({ _ in FBResult.logined }) // 成功结果
+                        .asDriver(onErrorRecover: { return Driver.just(FBResult.failed(($0 as! FBError).description.0)) }) // 失败结果
                     
                 case let .failed(msg): return Driver<FBResult>.just(FBResult.failed(msg))
                     
