@@ -87,6 +87,7 @@ public struct FBCollectionsViewModel: FBViewModel {
             .drive(onNext: { (result) in
                 
                 switch result {
+                    
                 case let .fetchList(items):
                     
                     if !items.isEmpty {
